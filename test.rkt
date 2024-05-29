@@ -44,16 +44,35 @@
 
 ; (define (louder s)
 ;   (string-append s "!"))
+; (louder "zxcv")
 ; (define louder
 ;   (lambda (s)
 ;     (string-append s "!")))
 ; louder
 
 
-(define (sigma f a b)
-  (if (= a b)
-      0
-      (+ (f a) (sigma f (+ a 1) b))))
-(time (round (sigma (lambda (x) (/ 1.0 x)) 1 200000)))
-(time (round (sigma (lambda (x) (/ 1 x)) 1 200000)))
+; (define (sigma f a b)
+;   (if (= a b)
+;       0
+;       (+ (f a) (sigma f (+ a 1) b))))
+; (writeln (time (round (sigma (lambda (x) (/ 1.0 x)) 1 20000))))
+; (writeln (time (round (sigma (lambda (x) (/ 1 x)) 1 20000))))
 
+
+; (apply
+;   (lambda x (string-append (car x) "sdf") )
+;   '("xx" "xcvx"))
+; ((lambda (z . x) (string-append (car x) "sdf") )
+;   "zz" "xx" "cc")
+; ((lambda ([z "zx"] . x) (string-append z "sdf") )
+;   )
+
+; (define (tf q)
+;   (lambda (a #:base [z (if (> (string-length q) 2) q "no" )] s . x) (string-append a "-" z "-" s "-" (car x)) ))
+; ((tf "fff") "aa" "ss" "dd" #:base "zz")
+; ((tf "fff") "aa" "ss" "dd")
+
+; ((case-lambda
+;   [(n1) (string-append "s:" n1)]
+;   [(n1 n2) (string-append "s:" n1 "-" n2)])
+;   "sdf" "xx")

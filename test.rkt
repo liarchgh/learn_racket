@@ -76,3 +76,15 @@
 ;   [(n1) (string-append "s:" n1)]
 ;   [(n1 n2) (string-append "s:" n1 "-" n2)])
 ;   "sdf" "xx")
+
+; (define (m s1) (lambda (x) (string-append s1 x)))
+; ((m "ss") "xx")
+; (define ((m2 s1) s2) (string-append s1 s2))
+; ((m2 "zz") "xx")
+
+(define (sp s)
+	(apply values (string-split s " ")))
+(sp "aa bb cc")
+(define-values (s1 s2) (sp "aa bb"))
+s1
+s2

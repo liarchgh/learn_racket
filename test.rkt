@@ -82,9 +82,14 @@
 ; (define ((m2 s1) s2) (string-append s1 s2))
 ; ((m2 "zz") "xx")
 
-(define (sp s)
-	(apply values (string-split s " ")))
-(sp "aa bb cc")
-(define-values (s1 s2) (sp "aa bb"))
-s1
-s2
+; (define (sp s)
+; 	(apply values (string-split s " ")))
+; (sp "aa bb cc")
+; (define-values 
+; s2
+
+
+; 4.7
+
+; (member "ax" '("vv" "ax" "ss" "ax" "xx"))
+; (member "aaa" '("vv" "ax" "ss" "ax" "xx"))

@@ -107,3 +107,18 @@
 ; 		(display "if true2")
 ; 	)
 ; )
+
+; 4.12
+
+; (define (tv v)
+; 	(printf "v:~a\n" v)
+; 	(case v
+; 		[(1) "111"]
+; 		[(2 0) "222"]
+; 		[else "ccc"]
+; 	)
+; )
+; (tv 1)
+; (tv 0)
+; (tv 2)
+; (tv 4)

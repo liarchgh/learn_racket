@@ -93,3 +93,17 @@
 
 ; (member "ax" '("vv" "ax" "ss" "ax" "xx"))
 ; (member "aaa" '("vv" "ax" "ss" "ax" "xx"))
+
+
+; 4.8
+
+; (let ([x #t])
+; 	(if x
+; 		(display "if true")
+; 		(display "if false")
+; 	)
+; 	(when x
+; 		(display "if true1")
+; 		(display "if true2")
+; 	)
+; )

@@ -122,3 +122,6 @@
 ; (tv 0)
 ; (tv 2)
 ; (tv 4)
+
+; (remove-duplicates '('(1 2) '(2 1)) #:key (lambda (n) (printf "~a\n" n) (list->mutable-set n)))
+(remove-duplicates (list (list 1 2) (list 2 1)))

@@ -124,4 +124,26 @@
 ; (tv 4)
 
 ; (remove-duplicates '('(1 2) '(2 1)) #:key (lambda (n) (printf "~a\n" n) (list->mutable-set n)))
-(remove-duplicates (list (list 1 2) (list 2 1)))
+; (remove-duplicates (list (list 1 2) (list 2 1)))
+
+; 8.1
+
+; (define in (open-input-file "in.txt"))
+; (define out (open-output-file "out.txt" #:exists 'truncate))
+; (displayln (read-line in) out)
+; (close-input-port in)
+; (close-output-port out)
+
+; (define in (open-input-file "in.txt"))
+; (call-with-input-file "in.txt"
+; 	(lambda (in)
+; 		(call-with-output-file "out.txt"
+; 			#:exists 'truncate
+; 			(lambda (out)
+; 				(displayln (read-line in) out)))
+; 		(close-input-port in)))
+
+(define ti (open-output-string))
+(display "t1" ti)
+(display "t2" ti)
+(display (get-output-string ti))

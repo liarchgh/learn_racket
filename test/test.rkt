@@ -188,16 +188,22 @@
 ; (printf "Command stdout output: ~a\n" stdout-output)
 ; (printf "Command stderr output: ~a\n" stderr-output)
 
-; Process Pipes
-(define-values (wc-path-raw wc-path-error) (shell-call "which wc"))
-(define wc-path (string-replace (string-replace wc-path-raw "\n" "") "\r" ""))
-(print wc-path)
-(define-values (p so si se)
-	; must be absolute path
-	(subprocess #f #f #f wc-path "-w"))
-(display "a b c\n" si)
-(close-output-port si)
-(read-line so)
-(read-line se)
-(close-input-port so)
-(close-input-port se)
+; ; Process Pipes
+; (define-values (wc-path-raw wc-path-error) (shell-call "which wc"))
+; (define wc-path (string-replace (string-replace wc-path-raw "\n" "") "\r" ""))
+; (print wc-path)
+; (define-values (p so si se)
+; 	; must be absolute path
+; 	(subprocess #f #f #f wc-path "-w"))
+; (display "a b c\n" si)
+; (close-output-port si)
+; (read-line so)
+; (read-line se)
+; (close-input-port so)
+; (close-input-port se)
+
+; Internal Pipes
+(define-values (in out) (make-pipe))
+(display "test" out)
+(close-output-port out)
+(read-line in)

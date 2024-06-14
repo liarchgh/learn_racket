@@ -1,3 +1,4 @@
+#! racket
 #lang racket
 
 ; (define (got-milk? lst)
@@ -157,3 +158,46 @@
 ; (close-output-port sout)
 ; (read-line sin)
 ; (read-line cin)
+
+; ; system cmd, shell call
+; (define (capture-output cmd)
+; 	(with-output-to-string
+; 		(λ () (system cmd))))
+; (define pwd-output (capture-output "pwd"))
+; (printf "Current directory is: ~a\n" pwd-output)
+
+; system cmd, shell call and capture stdout and stderror
+(define (shell-call command)
+	(define stdout (open-output-bytes)) ; 创建一个字符串输出端口用于捕获
+	(define stderr (open-output-string))
+	(define result
+		(parameterize
+			([current-error-port (dup-output-port stderr #t)]
+				[current-output-port (dup-output-port stdout #t)])
+			(system command))) ; 执行命令
+	(define error-output (get-output-string stderr)) ; 获取输出
+	(define common-output (get-output-string stdout))
+	(close-output-port stdout) ; 关闭字符串输出端口
+	(close-output-port stderr)
+	(values common-output error-output)) ; 返回捕获的输出
+; ; 使用示例
+; (define-values (stdout-output1 stderr-output1) (shell-call "ls"))
+; (printf "Command stdout output: ~a\n" stdout-output1)
+; (printf "Command stderr output: ~a\n" stderr-output1)
+; (define-values (stdout-output stderr-output) (shell-call "ls not_existing_file"))
+; (printf "Command stdout output: ~a\n" stdout-output)
+; (printf "Command stderr output: ~a\n" stderr-output)
+
+; Process Pipes
+(define-values (wc-path-raw wc-path-error) (shell-call "which wc"))
+(define wc-path (string-replace (string-replace wc-path-raw "\n" "") "\r" ""))
+(print wc-path)
+(define-values (p so si se)
+	; must be absolute path
+	(subprocess #f #f #f wc-path "-w"))
+(display "a b c\n" si)
+(close-output-port si)
+(read-line so)
+(read-line se)
+(close-input-port so)
+(close-input-port se)

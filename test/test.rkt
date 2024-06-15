@@ -230,3 +230,16 @@
 ; )
 ; (display (get-output-string out))
 ; (close-output-port out)
+
+
+; 8.3
+
+(define-values (in out) (make-pipe))
+(define tl '(1 3 "sdf"))
+(write tl out)
+(define tl2 (read in))
+(display tl out)
+(define tl3 (read in))
+(println tl)
+(printf "read from write:~v, equal with origin:~a \n" tl2 (equal? tl tl2))
+(printf "read from display:~v, equal with origin:~a \n" tl3 (equal? tl tl3))

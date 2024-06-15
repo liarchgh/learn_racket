@@ -202,8 +202,31 @@
 ; (close-input-port so)
 ; (close-input-port se)
 
-; Internal Pipes
-(define-values (in out) (make-pipe))
-(display "test" out)
-(close-output-port out)
-(read-line in)
+; ; Internal Pipes
+; (define-values (in out) (make-pipe))
+; (display "test" out)
+; (close-output-port out)
+; (read-line in)
+
+
+; 8.2
+
+; ; test make-pipe
+; (define-values (in out) (make-pipe))
+; (parameterize ([current-output-port out])
+; 	(display "sdf")
+; )
+; (close-output-port out)
+; (display (port->string in))
+
+; ; test open-output-string
+; (define out (open-output-string))
+; (parameterize ([current-output-port out])
+; 	(display "sdf")
+; )
+; (display (get-output-string out))
+; (parameterize ([current-output-port out])
+; 	(display "zxcv")
+; )
+; (display (get-output-string out))
+; (close-output-port out)

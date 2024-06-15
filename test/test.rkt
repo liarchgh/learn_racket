@@ -247,11 +247,21 @@
 
 ; 8.4
 
-; serializable-struct
-(require racket/serialize)
-(serializable-struct posn (x y) #:transparent)
-(deserialize (serialize (posn 1 2)))
-(write (serialize (posn 1 2)))
-(define-values (in out) (make-pipe))
-(write (serialize (posn 1 2)) out)
-(deserialize (read in))
+; ; serializable-struct
+; (require racket/serialize)
+; (serializable-struct posn (x y) #:transparent)
+; (deserialize (serialize (posn 1 2)))
+; (write (serialize (posn 1 2)))
+; (define-values (in out) (make-pipe))
+; (write (serialize (posn 1 2)) out)
+; (deserialize (read in))
+
+
+; 8.6
+
+(define f1 (port->string (open-input-file "test/in.txt")))
+(define f1-in (open-input-file "test/in.txt"))
+(println f1)
+(for ([l (in-lines f1-in)])
+	; (display (string-upcase l))
+	(displayln l))

@@ -259,9 +259,17 @@
 
 ; 8.6
 
-(define f1 (port->string (open-input-file "test/in.txt")))
-(define f1-in (open-input-file "test/in.txt"))
-(println f1)
-(for ([l (in-lines f1-in)])
-	; (display (string-upcase l))
-	(displayln l))
+; (define f1 (port->string (open-input-file "test/in.txt")))
+; (define f1-in (open-input-file "test/in.txt"))
+; (println f1)
+; (for ([l (in-lines f1-in)])
+; 	; (display (string-upcase l))
+; 	(displayln l))
+
+
+; 9.1
+
+(regexp-quote "zxcv?.*")
+(define patern "a+b")
+(regexp-match-positions patern "vbjisaaab ab")
+(regexp-match-positions patern "ccc")

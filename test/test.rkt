@@ -270,6 +270,9 @@
 ; 9.1
 
 (regexp-quote "zxcv?.*")
-(define patern "a+b")
-(regexp-match-positions patern "vbjisaaab ab")
-(regexp-match-positions patern "ccc")
+(define pattern #rx"a+b")
+(define base-str "vbjisaaab ab")
+(define res (regexp-match-positions pattern base-str))
+(println res)
+(substring base-str (car (car res)) (cdr (car res)))
+(regexp-match pattern base-str)
